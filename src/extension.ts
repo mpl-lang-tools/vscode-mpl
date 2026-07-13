@@ -1,3 +1,5 @@
+import * as fs from "node:fs";
+import * as path from "node:path";
 import * as vscode from "vscode";
 import {
   LanguageClient,
@@ -8,16 +10,18 @@ import {
 
 let client: LanguageClient | undefined;
 
-export async function activate(): Promise<void> {
+export async function activate(context: vscode.ExtensionContext): Promise<void> {
   const executable = process.platform === "win32" ? "mpl-lsp.exe" : "mpl-lsp";
+  const bundledServer = context.asAbsolutePath(path.join("server", executable));
+  const command = fs.existsSync(bundledServer) ? bundledServer : executable;
 
   const serverOptions: ServerOptions = {
     run: {
-      command: executable,
+      command,
       transport: TransportKind.stdio,
     },
     debug: {
-      command: executable,
+      command,
       transport: TransportKind.stdio,
     },
   };

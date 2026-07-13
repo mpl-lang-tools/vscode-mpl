@@ -1,7 +1,7 @@
 {
   "name": "mpl-vscode",
   "displayName": "MPL",
-  "version": "0.5.7",
+  "version": "0.0.0-dev",
   "publisher": "axiomhq",
   "description": "VS Code language support for Axiom Metrics Processing Language (MPL)",
   "license": "MIT OR Apache-2.0",
@@ -30,6 +30,7 @@
     "dist",
     "language-configuration.json",
     "syntaxes",
+    "server",
     "README.md",
     "LICENSE",
     "LICENSE-APACHE",
@@ -66,7 +67,8 @@
     "check": "tsc -p . --noEmit",
     "build": "vite build",
     "watch": "tsc -w -p .",
-    "package": "vsce package --no-dependencies"
+    "stage": "node ./scripts/stage-server.mjs",
+    "package": "vsce package --no-dependencies --allow-unused-files-pattern"
   },
   "devDependencies": {
     "@types/node": "^20.0.0",
