@@ -12,6 +12,8 @@ on:
         required: false
         default: "main"
   push:
+    branches:
+      - main
     tags:
       - "v*"
 
