@@ -214,14 +214,15 @@ jobs:
           if gh release view "$release_tag" > /dev/null 2>&1; then
             gh release edit "$release_tag" \
               --title "Latest build" \
-              --notes "Rolling prerelease built from the latest successful workflow run." \
-              --prerelease
+              --notes "Rolling release built from the latest successful workflow run." \
+              --prerelease=false \
+              --latest
           else
             gh release create "$release_tag" \
               --verify-tag \
               --title "Latest build" \
-              --notes "Rolling prerelease built from the latest successful workflow run." \
-              --prerelease
+              --notes "Rolling release built from the latest successful workflow run." \
+              --latest
           fi
 
           gh release upload "$release_tag" release-assets/*.vsix --clobber
