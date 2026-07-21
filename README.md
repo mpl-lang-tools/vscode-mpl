@@ -27,6 +27,6 @@ npm run stage -- ../mpl/target/release/mpl-lsp
 npm run package -- --out mpl-vscode.vsix
 ```
 
-The `Package VSIX` GitHub Actions workflow builds from `mpl-lang-tools/mpl-analyzer` on `main` by default. To build from a different fork, set the manual `mpl_repository` input to `owner/repo` and `mpl_ref` to the branch, tag, or commit SHA. For tag-triggered runs, set repository variables named `MPL_REPOSITORY` and `MPL_REF`.
+The `Package VSIX` GitHub Actions workflow builds from `mpl-lang-tools/mpl-analyzer` on `main` by default. To build from a different fork, set the manual `mpl_repository` input to `owner/repo` and `mpl_ref` to the branch, tag, or commit SHA. For push and scheduled runs, set repository variables named `MPL_REPOSITORY` and `MPL_REF`.
 
-Every run uploads VSIX files as workflow run artifacts. Successful pushes to `main` also update the rolling `latest` GitHub prerelease, while `v*` tag-triggered runs create or update the matching versioned GitHub Release.
+The workflow runs manually, on pushes to `main`, and nightly. Every successful run uploads platform-specific VSIX files as workflow artifacts and replaces the assets on the rolling `latest` GitHub Release.

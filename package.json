@@ -1,7 +1,7 @@
 {
   "name": "mpl-vscode",
   "displayName": "MPL",
-  "version": "0.0.0-dev",
+  "version": "0.5.7",
   "publisher": "axiomhq",
   "description": "VS Code language support for Axiom Metrics Processing Language (MPL)",
   "license": "MIT OR Apache-2.0",
